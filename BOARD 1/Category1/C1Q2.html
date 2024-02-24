@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WHY DO I HEAR BOSS MUSIC? - 400</title>
+    <style>
+      @font-face {
+        font-family: "YourCustomFont";
+        src: url("GenshinFont.ttf") format("truetype");
+      }
+
+      body {
+        font-family: "YourCustomFont", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(
+          to bottom,
+          #076a83,
+          #58016a
+        ); /* Adjust the colors as needed */
+        color: #fff;
+      }
+
+      header {
+        font-size: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center-align text */
+        margin-bottom: 20px;
+      }
+
+      .question-container {
+        width: 1863px;
+        height: 860px;
+        margin: 5px auto;
+        text-align: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .return-button,
+      .answer-button {
+        font-size: 20px;
+        padding: 20px 40px;
+        margin: 10px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        font-size: 30px;
+        font-family: "YourCustomFont", Arial, sans-serif;
+      }
+
+      .return-button:hover,
+      .answer-button:hover {
+        background-color: #555;
+      }
+
+      .question-text,
+      .answer-text {
+        font-size: 60px;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .question-text p,
+      .answer-text p {
+        margin: 0; /* Remove default paragraph margin */
+      }
+
+      audio {
+        width: 50%;
+        margin-top: 20px;
+      }
+
+      .answer-text {
+        display: none;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .answer-image {
+        max-width: 100%;
+        max-height: 550px;
+        margin-top: 20px;
+      }
+      .category-info {
+        font-size: 30px;
+      }
+      .category-info {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="question-container" id="questionContainer">
+      <header>
+        WHY DO I HEAR BOSS MUSIC? - 400<br />
+        <span class="category-info">(BOSS OST)</span>
+      </header>
+      <question class="question-text" id="questionText">
+        <p>This Song Plays When The Traveler Fights Which Boss?</p>
+        <audio id="audioPlayer" controls>
+          <!-- Replace 'path/to/question/music.mp3' with the actual path to your question audio -->
+          <source src="MP3 STORE/God-Devouring Mania.mp3 " type="audio/mp3" />
+          Your browser does not support the audio tag.
+        </audio>
+      </question>
+      <answer class="answer-text" id="answerText">
+        <p>Guardian of Apep's Oasis</p>
+        <!-- Replace 'IMG Store/Wrio F.png' with the correct path to your answer image -->
+        <img
+          class="answer-image"
+          src="IMG Store/Guardian of Apep's Oasis.png"
+          alt="Answer Image"
+        />
+      </answer>
+
+      <div class="button-container">
+        <button class="return-button" onclick="returnToJeopardy()">
+          Return to Jeopardy
+        </button>
+        <button class="answer-button" onclick="showAnswer()">
+          Show Answer
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function returnToJeopardy() {
+        window.close(); // Closes the current tab
+      }
+
+      function showAnswer() {
+        var questionText = document.getElementById("questionText");
+        var answerText = document.getElementById("answerText");
+        var audioPlayer = document.getElementById("audioPlayer");
+
+        // Pause the audio before showing the answer
+        audioPlayer.pause();
+
+        // Update the content and style to show the answer
+        questionText.style.display = "none";
+        answerText.style.display = "block";
+      }
+
+      // You can set the start time in seconds, adjust as needed
+      document.getElementById("audioPlayer").currentTime = 0;
+    </script>
+  </body>
+</html>

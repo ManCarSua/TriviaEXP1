@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SKILL ISSUE - 400</title>
+    <style>
+      @font-face {
+        font-family: "YourCustomFont";
+        src: url("GenshinFont.ttf") format("truetype");
+      }
+
+      body {
+        font-family: "YourCustomFont", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(
+          to bottom,
+          #076a83,
+          #58016a
+        ); /* Adjust the colors as needed */
+        color: #fff;
+      }
+
+      header {
+        font-size: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center-align text */
+        margin-bottom: 20px;
+      }
+
+      .category-info {
+        font-size: 30px;
+      }
+
+      .question-container {
+        width: 1863px;
+        height: 860px;
+        margin: 5px auto;
+        text-align: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .return-button,
+      .answer-button {
+        font-size: 20px;
+        padding: 20px 40px;
+        margin: 10px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        font-size: 30px;
+        font-family: "YourCustomFont", Arial, sans-serif;
+      }
+
+      .return-button:hover,
+      .answer-button:hover {
+        background-color: #555;
+      }
+
+      .question-text,
+      .answer-text {
+        font-size: 60px;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .question-text p,
+      .answer-text p {
+        margin: 0; /* Remove default paragraph margin */
+      }
+
+      .question-text img,
+      .answer-text img {
+        max-width: 100%;
+        max-height: 500px; /* Adjust the max height as needed */
+        object-fit: contain; /* Adjust the object-fit property */
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin: 0 auto; /* Center the image */
+      }
+
+      .answer-text {
+        display: none;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="question-container" id="questionContainer">
+      <header>
+        SKILL ISSUE - 400<br />
+        <span class="category-info">(Character Mechanics)</span>
+      </header>
+      <question class="question-text" id="questionText">
+        <p>
+          When Kazuha triggers swirl,<br />this element has the last infusion
+          priority
+        </p>
+        <!-- Replace 'path/to/question/image.jpg' with the actual path to your question image -->
+      </question>
+      <answer class="answer-text" id="answerText">
+        <p>What is cryo</p>
+        <!-- Replace 'path/to/answer/image.jpg' with the actual path to your answer image -->
+      </answer>
+
+      <div class="button-container">
+        <button class="return-button" onclick="returnToJeopardy()">
+          Return to Jeopardy
+        </button>
+        <button class="answer-button" onclick="showAnswer()">
+          Show Answer
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function returnToJeopardy() {
+        window.close(); // Closes the current tab
+      }
+
+      function showAnswer() {
+        var questionText = document.getElementById("questionText");
+        var answerText = document.getElementById("answerText");
+
+        // Update the content and style to show the answer
+        questionText.style.display = "none";
+        answerText.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

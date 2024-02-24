@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<!-- 
+  INSERT COMMENTS HERE TO HELP THE PEOPLE EDIT THE CODE
+
+
+
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeopardy Board</title>
+    <style>
+      @font-face {
+        font-family: "YourCustomFont";
+        src: url("PKMN RBYGSC.ttf") format("truetype");
+      }
+
+      body {
+        font-family: "YourCustomFont", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+      }
+
+      .jeopardy-board {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+        padding: 20px;
+        max-width: 11000;
+        margin: 5px auto;
+      }
+
+      .category {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(
+          to bottom,
+          #076a83,
+          #58016a
+        ); /* Adjust the colors as needed */
+        color: #ffffff;
+        color: #ffffff;
+        text-shadow: 2px 1px 0px rgba(0, 0, 0, 1); /* Adjust the values as needed */
+        padding: 10px;
+        height: 140px; /* Set your desired maximum height */
+        overflow: hidden; /* Hide content beyond max height */
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 3px solid #2bf2fd;
+        border-radius: 3px;
+      }
+
+      .question {
+        font-size: 3.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #0b67b6;
+        color: #fff;
+        text-shadow: 8px 4px 0px rgba(0, 0, 0, 1); /* Adjust the values as needed */
+        padding: 20px;
+        height: 80px; /* Set your desired maximum height */
+        cursor: pointer;
+        transition: background-color 0.5s;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 3px solid #2bf2fd;
+        border-radius: 3px;
+      }
+
+      .question2 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #1d3fa6;
+        color: #fff;
+        text-shadow: 8px 4px 0px rgba(0, 0, 0, 1); /* Adjust the values as needed */
+        padding: 20px;
+        height: 80px; /* Set your desired maximum height */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 3px solid #2bf2fd;
+        border-radius: 3px;
+      }
+
+      .question3 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #2f1796;
+        color: #fff;
+        text-shadow: 8px 4px 0px rgba(0, 0, 0, 1); /* Adjust the values as needed */
+        padding: 20px;
+        height: 80px; /* Set your desired maximum height */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 3px solid #2bf2fd;
+        border-radius: 3px;
+      }
+
+      .question4 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #400e85;
+        color: #fff;
+        text-shadow: 8px 4px 0px rgba(0, 0, 0, 1); /* Adjust the values as needed */
+        padding: 20px;
+        height: 80px; /* Set your desired maximum height */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 3px solid #2bf2fd;
+        border-radius: 3px;
+      }
+
+      .question5 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #520675;
+        color: #fff;
+        text-shadow: 8px 4px 0px rgba(0, 0, 0, 1); /* Adjust the values as needed */
+        padding: 20px;
+        height: 80px; /* Set your desired maximum height */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 3px solid #2bf2fd;
+        border-radius: 3px;
+      }
+
+      .question6 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #4c047b;
+        color: #fff;
+        text-shadow: 8px 4px 0px rgba(0, 0, 0, 1); /* Adjust the values as needed */
+        padding: 20px;
+        height: 80px; /* Set your desired maximum height */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 3px solid #2bf2fd;
+        border-radius: 3px;
+      }
+
+      .question:hover {
+        background-color: #027502;
+        color: #ffff00;
+        border: 3px solid #1fbe22;
+        border-radius: 3px;
+      }
+
+      .question2:hover {
+        background-color: #027502;
+        color: #ffff00;
+        border: 3px solid #1fbe22;
+        border-radius: 3px;
+      }
+
+      .question3:hover {
+        background-color: #027502;
+        color: #ffff00;
+        border: 3px solid #1fbe22;
+        border-radius: 3px;
+      }
+
+      .question4:hover {
+        background-color: #027502;
+        color: #ffff00;
+        border: 3px solid #1fbe22;
+        border-radius: 3px;
+      }
+
+      .question5:hover {
+        background-color: #027502;
+        color: #ffff00;
+        border: 3px solid #1fbe22;
+        border-radius: 3px;
+      }
+
+      .return-button {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        display: block;
+        margin: 20px auto;
+      }
+
+      .return-button:hover {
+        background-color: #555;
+      }
+
+      .question-clicked {
+        background-color: #1d1d1d;
+        color: #ffffff;
+        cursor: default;
+        border: 3px solid #6b6b6b;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jeopardy-board">
+      <!-- EDIT THE LINE BELOW TO CHANGE CATEGORY 1 TITLE -->
+      <div class="category">WHY DO I HEAR BOSS MUSIC</div>
+      <!-- EDIT THE LINE BELOW TO CHANGE CATEGORY 2 TITLE -->
+      <div class="category">SKILL ISSUE</div>
+      <!-- EDIT THE LINE BELOW TO CHANGE CATEGORY 3 TITLE -->
+      <div class="category">GOOD MORNING TRAVELER</div>
+      <!-- EDIT THE LINE BELOW TO CHANGE CATEGORY 4 TITLE -->
+      <div class="category">MEMORIES OF THE HEART</div>
+      <!-- EDIT THE LINE BELOW TO CHANGE CATEGORY 5 TITLE -->
+      <div class="category">EVENT EXCLUSIVE WEAPONS</div>
+      <!-- EDIT THE LINE BELOW TO CHANGE CATEGORY 6 TITLE -->
+      <div class="category">WHO IS THAT POKEMON?</div>
+
+      <!-- Difficulty 1 -->
+      <div
+        class="question"
+        onclick="showQuestionInNewTab('Category1/C1Q1.html', this)"
+      >
+        200
+      </div>
+      <div
+        class="question"
+        onclick="showQuestionInNewTab('Category2/C2Q1.html', this)"
+      >
+        200
+      </div>
+      <div
+        class="question"
+        onclick="showQuestionInNewTab('Category3/C3Q1.html', this)"
+      >
+        200
+      </div>
+      <div
+        class="question"
+        onclick="showQuestionInNewTab('Category4/C4Q1.html', this)"
+      >
+        200
+      </div>
+      <div
+        class="question"
+        onclick="showQuestionInNewTab('Category5/C5Q1.html', this)"
+      >
+        200
+      </div>
+      <div
+        class="question"
+        onclick="showQuestionInNewTab('Category6/C6Q1.html', this)"
+      >
+        200
+      </div>
+
+      <!-- Difficulty 2 -->
+      <div
+        class="question2"
+        onclick="showQuestionInNewTab('Category1/C1Q2.html', this)"
+      >
+        400
+      </div>
+      <div
+        class="question2"
+        onclick="showQuestionInNewTab('Category2/C2Q2.html', this)"
+      >
+        400
+      </div>
+      <div
+        class="question2"
+        onclick="showQuestionInNewTab('Category3/C3Q2.html', this)"
+      >
+        400
+      </div>
+      <div
+        class="question2"
+        onclick="showQuestionInNewTab('Category4/C4Q2.html', this)"
+      >
+        400
+      </div>
+      <div
+        class="question2"
+        onclick="showQuestionInNewTab('Category5/C5Q2.html', this)"
+      >
+        400
+      </div>
+      <div
+        class="question2"
+        onclick="showQuestionInNewTab('Category6/C6Q2.html', this)"
+      >
+        400
+      </div>
+
+      <!-- Category 3 -->
+      <div
+        class="question3"
+        onclick="showQuestionInNewTab('Category1/C1Q3.html', this)"
+      >
+        600
+      </div>
+      <div
+        class="question3"
+        onclick="showQuestionInNewTab('Category2/C2Q3.html', this)"
+      >
+        600
+      </div>
+      <div
+        class="question3"
+        onclick="showQuestionInNewTab('Category3/C3Q3.html', this)"
+      >
+        600
+      </div>
+      <div
+        class="question3"
+        onclick="showQuestionInNewTab('Category4/C4Q3.html', this)"
+      >
+        600
+      </div>
+      <div
+        class="question3"
+        onclick="showQuestionInNewTab('Category5/C5Q3.html', this)"
+      >
+        600
+      </div>
+      <div
+        class="question3"
+        onclick="showQuestionInNewTab('Category6/C6Q3.html', this)"
+      >
+        600
+      </div>
+
+      <!-- Difficulty 4 -->
+      <div
+        class="question4"
+        onclick="showQuestionInNewTab('Category1/C1Q4.html', this)"
+      >
+        800
+      </div>
+      <div
+        class="question4"
+        onclick="showQuestionInNewTab('Category2/C2Q4.html', this)"
+      >
+        800
+      </div>
+      <div
+        class="question4"
+        onclick="showQuestionInNewTab('Category3/C3Q4.html', this)"
+      >
+        800
+      </div>
+      <div
+        class="question4"
+        onclick="showQuestionInNewTab('Category4/C4Q4.html', this)"
+      >
+        800
+      </div>
+      <div
+        class="question4"
+        onclick="showQuestionInNewTab('Category5/C5Q4.html', this)"
+      >
+        800
+      </div>
+      <div
+        class="question4"
+        onclick="showQuestionInNewTab('Category6/C6Q4.html', this)"
+      >
+        800
+      </div>
+
+      <!-- Difficulty 5 -->
+      <div
+        class="question5"
+        onclick="showQuestionInNewTab('Category1/C1Q5.html', this)"
+      >
+        1000
+      </div>
+      <div
+        class="question5"
+        onclick="showQuestionInNewTab('Category2/C2Q5.html', this)"
+      >
+        1000
+      </div>
+      <div
+        class="question5"
+        onclick="showQuestionInNewTab('Category3/C3Q5.html', this)"
+      >
+        1000
+      </div>
+      <div
+        class="question5"
+        onclick="showQuestionInNewTab('Category4/C4Q5.html', this)"
+      >
+        1000
+      </div>
+      <div
+        class="question5"
+        onclick="showQuestionInNewTab('Category5/C5Q5.html', this)"
+      >
+        1000
+      </div>
+      <div
+        class="question5"
+        onclick="showQuestionInNewTab('Category6/C6Q5.html', this)"
+      >
+        1000
+      </div>
+    </div>
+
+    <script>
+      function showQuestionInNewTab(targetPage, buttonElement) {
+        window.open(targetPage, "_blank");
+        buttonElement.innerHTML = "";
+        buttonElement.classList.add("question-clicked");
+      }
+    </script>
+  </body>
+</html>
